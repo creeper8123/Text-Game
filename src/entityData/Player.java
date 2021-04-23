@@ -1,8 +1,6 @@
 package entityData;
 
-import engineInteractions.processList;
-import itemData.miscItemData;
-import itemData.spell.spell;
+
 
 import java.io.IOException;
 
@@ -10,13 +8,7 @@ public class Player {
     public static int health = 100;
 
     public static int[] location = {0, 15, 15}; //spawn is {0, 15, 15}. Format is {Floor, x, y}
-    public static String world = "Overworld";
-
-    public static spell[] spells = {new spell("None")};
-    public static miscItemData[] inventory;
-
-
-
+    public static int world = 0;
 
     public static void movePlayer() throws IOException {
         String[] canMoveTo = moveEntity.getViableDirections(Player.location).toArray(new String[0]);

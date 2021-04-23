@@ -8,6 +8,9 @@ import java.util.Arrays;
 
 
 public class mainClass {
+
+    mapData world = new mapData();
+
     public static void main(String[] args) throws IOException {
         //TODO: Make this open the CMD and open this program in said CMD
         //Runtime.getRuntime().exec(new String[]{"cmd.exe","/c","start"}); //Open CMD, doesn't yet run program in CMD

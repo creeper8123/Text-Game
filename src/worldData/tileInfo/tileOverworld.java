@@ -17,13 +17,13 @@ public class tileOverworld {
     public String fluidOnGround; //What liquid is on this tile?
     public int fluidLevel; //How many updates till the fluid disperses? (-1 is infinite)
 
-    public  boolean isTeleport; //Does the player teleport when stepping on this tile?
+    public  boolean isTeleporter; //Does the player teleport when stepping on this tile?
     public String teleportTo; //Where does the player teleport to? (Format: "Map, [x, y]")
 
     public tileOverworld(String tileType){
         tileName = tileType;
         teleportTo = "Overworld, [16, 16]";
-        isTeleport = true;
+        isTeleporter = true;
 
         switch (tileType) {
             case "Plains" -> {
