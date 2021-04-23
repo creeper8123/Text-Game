@@ -1,7 +1,6 @@
 package entityData;
 
 import engineInteractions.processList;
-import itemData.miscItemData;
 import itemData.spell.spell;
 
 import java.io.IOException;
@@ -13,7 +12,7 @@ public class Player {
     public static String world = "Overworld";
 
     public static spell[] spells = {new spell("None")};
-    public static miscItemData[] inventory;
+    public static itemData.inventory[] inventory;
 
 
 

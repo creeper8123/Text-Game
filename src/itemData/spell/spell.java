@@ -1,7 +1,8 @@
 package itemData.spell;
 
-public class spell {
-    //TODO: specialEffect
+import itemData.inventory;
+
+public class spell extends inventory {
     public String name; //Name of the spell
     public boolean isInvisible = false; //Can the player see this spell? (Only used for 'none')
     public int damage; //How much to reduce the health by if it hits.
