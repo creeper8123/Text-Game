@@ -9,7 +9,7 @@ import java.util.Arrays;
 
 public class mainClass {
 
-    mapData world = new mapData();
+    public static mapData world = new mapData();
 
     public static void main(String[] args) throws IOException {
         //TODO: Make this open the CMD and open this program in said CMD
@@ -20,7 +20,7 @@ public class mainClass {
         for(int i=0;i<100;i++){
             entityData.Player.movePlayer();
             System.out.println(Arrays.toString(Player.location));
-            System.out.println("Standing on: " + mapData.Overworld[Player.location[1]][Player.location[2]].tileName);
+            System.out.println("Standing on: " + world.Overworld[Player.location[1]][Player.location[2]].tileName);
         }
     }
 }

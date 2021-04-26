@@ -11,7 +11,7 @@ public class interactWithText {
     }
 
     public static void printValueToConsole(String dataToPrint, int delayTime, boolean gotoNextLine){
-        delayTime = 0; //TODO: Remove this after done testing
+        //delayTime = 0; //TODO: Remove this after done testing
         String extraDelay = ",.?!:;";
         try{
             char[] dataToPrintArray = dataToPrint.toCharArray();
