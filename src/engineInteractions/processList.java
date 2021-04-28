@@ -5,7 +5,6 @@ import java.util.Locale;
 
 public class processList {
     public static int determineSelected(String[] baseList, String userInput){
-
         try{
             //If it's a valid index, return said index.
             int num = Integer.parseInt(userInput);
@@ -25,7 +24,6 @@ public class processList {
                 return -1;
             }
         }
-
         //If no valid index is found.
         return -1;
     }

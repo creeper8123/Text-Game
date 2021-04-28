@@ -21,6 +21,7 @@ public class tileOverworld {
     public String teleportTo = "0, [0, 16, 16]"; //Where does the player teleport to? (Format: "Map #, [Floor, x, y]")
 
     public tileOverworld(String tileType){
+        tileName = tileType;
         switch (tileType) {
             case "Plains" -> {
                 isWalkable = true;
@@ -37,7 +38,7 @@ public class tileOverworld {
                 localTemp = 65;
                 isFlammable = true;
                 isBurning = false;
-                baseBurnTime = 6;
+                baseBurnTime = 5;
                 canHoldFluid = true;
                 fluidOnGround = "none";
                 fluidLevel = 0;
