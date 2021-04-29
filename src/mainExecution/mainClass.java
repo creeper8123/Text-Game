@@ -17,12 +17,8 @@ public class mainClass {
         //TODO: Make this open the CMD and open this program in said CMD
         //Runtime.getRuntime().exec(new String[]{"cmd.exe","/c","start"}); //Open CMD, doesn't yet run program in CMD
 
-        System.out.println(Arrays.toString(player.location));
-
         for(int i=0;i<100;i++){
-            player.movePlayer(player);
-            System.out.println(Arrays.toString(player.location));
-            System.out.println("Standing on: " + world.Overworld[player.location[1]][player.location[2]].tileName);
+            player.doAction(player, true);
         }
     }
 }

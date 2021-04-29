@@ -40,7 +40,6 @@ public class spell extends inventory {
                 statusEffect = null;
                 statusEffectChance = 0;
             }
-
             case "magicBolt" -> {
                 name = "Magic Bolt";
                 damage = 10;
@@ -90,7 +89,6 @@ public class spell extends inventory {
                 statusEffectChance = 0;
                 //specialEffect = itemData.spell.specialEffect("magicbolt++");
             }
-
             case "fireBall" -> {
                 name = "Fire Ball";
                 damage = 20;
@@ -139,7 +137,6 @@ public class spell extends inventory {
                 statusEffect = "On Fire";
                 statusEffectChance = 0.9;
             }
-
             case "waterBolt" -> {
                 name = "Water Bolt";
                 damage = 15;
@@ -188,7 +185,6 @@ public class spell extends inventory {
                 statusEffect = null;
                 statusEffectChance = 0.4;
             }
-
             case "oilBall" -> {
                 name = "Oil Ball";
                 damage = 4;
@@ -237,7 +233,6 @@ public class spell extends inventory {
                 statusEffect = null;
                 statusEffectChance = 0.4;
             }
-
             case "acidBall" -> {
                 name = "Acid Ball";
                 damage = 4;
@@ -286,7 +281,6 @@ public class spell extends inventory {
                 statusEffect = null;
                 statusEffectChance = 0.4;
             }
-
             case "lavaBall" -> {
                 name = "Lava Ball";
                 damage = 80;

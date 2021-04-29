@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.Locale;
 
 public class processList {
-    public static int determineSelected(String[] baseList, String userInput){
+    private static int determineSelected(String[] baseList, String userInput){
         try{
             //If it's a valid index, return said index.
             int num = Integer.parseInt(userInput);
@@ -28,18 +28,21 @@ public class processList {
         return -1;
     }
 
-    public static int chooseFromList(String[] listToDisplay) throws IOException {
+    public static int chooseFromList(String[] listToDisplay, String titleCommandLine) throws IOException {
         int num;
         do{
+            interactWithText.printValueToConsole(titleCommandLine + ": ", 25, true);
             for(int i=0; i!=listToDisplay.length;i++) {
                interactWithText.printValueToConsole("[" + (i + 1) + "] " + listToDisplay[i], 25, true);
             }
             System.out.println();
-            interactWithText.printValueToConsole("Enter an option from the provided list: ", 25, false);
+            interactWithText.printValueToConsole("Enter Command: ", 25, false);
             num = determineSelected(listToDisplay, interactWithText.readValueFromConsole());
+            System.out.println();
+            System.out.println();
             if(num == -1){
                 interactWithText.printValueToConsole("", 100, true);
-                interactWithText.printValueToConsole("! Invalid Entry !", 25, true);
+                interactWithText.printValueToConsole("You can't do that.", 25, true);
                 interactWithText.printValueToConsole("", 100, true);
             }
         }while(num == -1);
