@@ -3,22 +3,22 @@ package worldData.tileInfo;
 public class tileDungeonIce {
     public String tileName; //The name to display the tile as
 
-    public String description; //A general description of the tile.
+    public String description = null; //A general description of the tile.
 
-    public boolean isWalkable; // Can the player walk on this tile?
+    public boolean isWalkable = true; // Can the player walk on this tile?
 
-    public int localTemp; //Do liquids freeze on this tile?
+    public int localTemp = 72; //Do liquids freeze on this tile?
 
-    public boolean isFlammable; //Does this tile burn?
+    public boolean isFlammable = true; //Does this tile burn?
     public boolean isBurning = false; //Is this tile currently on fire?
-    public int baseBurnTime; //How many updates does it burn? (-1 is infinite)
+    public int baseBurnTime = 4; //How many updates does it burn? (-1 is infinite)
 
-    public boolean canHoldFluid; //Does liquid stay on this tile?
-    public String fluidOnGround; //What liquid is on this tile?
-    public int fluidLevel; //How many updates till the fluid disperses? (-1 is infinite)
+    public boolean canHoldFluid = true; //Does liquid stay on this tile?
+    public String fluidOnGround = null; //What liquid is on this tile?
+    public int fluidLevel = 0; //How many updates till the fluid disperses? (-1 is infinite)
 
-    public  boolean isTeleport; //Does the player teleport when stepping on this tile?
-    public String teleportTo; //Where does the player teleport to? (Format: "Map, [x, y]")
+    public  boolean isTeleporter = false; //Does the player teleport when stepping on this tile?
+    public String teleportTo = "0, [0, 16, 16]"; //Where does the player teleport to? (Format: "Map #, [Floor, x, y]")
 
     public tileDungeonIce(String inputData){
         tileName = inputData;

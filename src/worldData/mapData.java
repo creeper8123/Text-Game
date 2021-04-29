@@ -1,10 +1,10 @@
 package worldData;
 
-import worldData.tileInfo.tileOverworld;
+import worldData.tileInfo.*;
 
 public class mapData {
 
-    public static tileOverworld[][] Overworld = {
+    public tileOverworld[][] Overworld = {
         {new tileOverworld("Poisoned Earth"), new tileOverworld("Poisoned Earth"), new tileOverworld("Poisoned Earth"), new tileOverworld("Poisoned Earth"), new tileOverworld("Poisoned Earth"), new tileOverworld("Poisoned Earth"), new tileOverworld("Poisoned Earth"), new tileOverworld("Poisoned Earth"), new tileOverworld("Plains"),         new tileOverworld("Plains"),    new tileOverworld("Plains"),     new tileOverworld("Plains"),    new tileOverworld("Plains"), new tileOverworld("Plains"), new tileOverworld("Plains"), new tileOverworld("Forest"), new tileOverworld("Forest"), new tileOverworld("Forest"),    new tileOverworld("Forest"),    new tileOverworld("Forest"),    new tileOverworld("Mountains"), new tileOverworld("Mountains"), new tileOverworld("Mountains"), new tileOverworld("Mountains"),       new tileOverworld("Mountains"),       new tileOverworld("Mountains"),       new tileOverworld("Mountains"),     new tileOverworld("Mountains"),         new tileOverworld("Mountains"),       new tileOverworld("Mountains"),       new tileOverworld("Mountains")},
         {new tileOverworld("Poisoned Earth"), new tileOverworld("Poisoned Earth"), new tileOverworld("Poisoned Earth"), new tileOverworld("Poisoned Earth"), new tileOverworld("Poisoned Earth"), new tileOverworld("Poisoned Earth"), new tileOverworld("Poisoned Earth"), new tileOverworld("Poisoned Earth"), new tileOverworld("Plains"),         new tileOverworld("Plains"),    new tileOverworld("Plains"),     new tileOverworld("Plains"),    new tileOverworld("Plains"), new tileOverworld("Plains"), new tileOverworld("Plains"), new tileOverworld("Plains"), new tileOverworld("Forest"), new tileOverworld("Forest"),    new tileOverworld("Forest"),    new tileOverworld("Forest"),    new tileOverworld("Mountains"), new tileOverworld("Mountains"), new tileOverworld("Mountains"), new tileOverworld("Snowy Mountains"), new tileOverworld("Snowy Mountains"), new tileOverworld("Snowy Mountains"), new tileOverworld("Snowy Mountains"), new tileOverworld("Snowy Mountains"), new tileOverworld("Snowy Mountains"), new tileOverworld("Snowy Mountains"), new tileOverworld("Mountains")},
         {new tileOverworld("Poisoned Earth"), new tileOverworld("Poisoned Earth"), new tileOverworld("Poisoned Earth"), new tileOverworld("Poisoned Earth"), new tileOverworld("Poisoned Earth"), new tileOverworld("Poisoned Earth"), new tileOverworld("Poisoned Earth"), new tileOverworld("Poisoned Earth"), new tileOverworld("Plains"),         new tileOverworld("Plains"),    new tileOverworld("Plains"),     new tileOverworld("Plains"),    new tileOverworld("Plains"), new tileOverworld("Plains"), new tileOverworld("Lake"),   new tileOverworld("Lake"),   new tileOverworld("Lake"),   new tileOverworld("Forest"),    new tileOverworld("Forest"),    new tileOverworld("Forest"),    new tileOverworld("Forest"),    new tileOverworld("Mountains"), new tileOverworld("Mountains"), new tileOverworld("Mountains"),       new tileOverworld("Snowy Mountains"), new tileOverworld("Snowy Mountains"), new tileOverworld("Snowy Mountains"), new tileOverworld("Snowy Mountains"), new tileOverworld("Snowy Mountains"), new tileOverworld("Snowy Mountains"), new tileOverworld("Mountains")},
@@ -41,7 +41,7 @@ public class mapData {
 
 
 
-    public static int[][][] dungeonIce = {
+    public tileDungeonIce[][][] dungeonIce = {
         { //Floor 1
             {},
             {},
@@ -69,31 +69,7 @@ public class mapData {
         },
     };
 
-    public static int[][][] dungeonFire = {
-        { //Floor 1
-            {},
-            {},
-            {},
-            {},
-            {}
-        },
-        { //Floor 2
-            {},
-            {},
-            {},
-            {},
-            {}
-        },
-        { //Floor 3
-            {},
-            {},
-            {},
-            {},
-            {}
-        }
-    };
-
-    public static int[][][] dungeonOcean = {
+    public tileDungeonFire[][][] dungeonFire = {
         { //Floor 1
             {},
             {},
@@ -117,7 +93,7 @@ public class mapData {
         }
     };
 
-    public static int[][][] dungeonPoison = {
+    public tileDungeonOcean[][][] dungeonOcean = {
         { //Floor 1
             {},
             {},
@@ -141,7 +117,31 @@ public class mapData {
         }
     };
 
-    public static int[][][] dungeonFinal = {
+    public tileDungeonPoison[][][] dungeonPoison = {
+        { //Floor 1
+            {},
+            {},
+            {},
+            {},
+            {}
+        },
+        { //Floor 2
+            {},
+            {},
+            {},
+            {},
+            {}
+        },
+        { //Floor 3
+            {},
+            {},
+            {},
+            {},
+            {}
+        }
+    };
+
+    public tileDungeonFinal[][][] dungeonFinal = {
         { //Floor 1
             {},
             {},
