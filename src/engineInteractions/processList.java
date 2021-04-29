@@ -39,9 +39,7 @@ public class processList {
             interactWithText.printValueToConsole("Enter Command: ", 25, false);
             num = determineSelected(listToDisplay, interactWithText.readValueFromConsole());
             System.out.println();
-            System.out.println();
             if(num == -1){
-                interactWithText.printValueToConsole("", 100, true);
                 interactWithText.printValueToConsole("You can't do that.", 25, true);
                 interactWithText.printValueToConsole("", 100, true);
             }

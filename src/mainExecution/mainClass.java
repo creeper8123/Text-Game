@@ -4,8 +4,6 @@ import entityData.Player;
 import worldData.mapData;
 
 import java.io.IOException;
-import java.util.Arrays;
-
 
 public class mainClass {
 
@@ -18,7 +16,8 @@ public class mainClass {
         //Runtime.getRuntime().exec(new String[]{"cmd.exe","/c","start"}); //Open CMD, doesn't yet run program in CMD
 
         for(int i=0;i<100;i++){
-            player.doAction(player, true);
+            player.doAction(player);
+            System.out.println("===Next iteration===");
         }
     }
 }
