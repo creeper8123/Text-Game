@@ -6,21 +6,23 @@ import java.io.InputStreamReader;
 
 public class interactWithText {
     public static String readValueFromConsole() throws IOException {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        return reader.readLine();
+        return new BufferedReader(new InputStreamReader(System.in)).readLine();
     }
 
     public static void printValueToConsole(String dataToPrint, int delayTime, boolean gotoNextLine){
-        String extraDelay = ",.?!;";
+        String extraDelay = ",.?!;:";
         try{
             char[] dataToPrintArray = dataToPrint.toCharArray();
             for(char i : dataToPrintArray){
+                System.out.print(i);
                 if(extraDelay.contains(Character.toString(i))){
                     Thread.sleep(delayTime* 8L);
                 }else{
                     Thread.sleep(delayTime);
                 }
-                System.out.print(i);
+            }
+            if(dataToPrintArray.length == 0){
+                Thread.sleep(delayTime);
             }
             if(gotoNextLine){
                 System.out.println();

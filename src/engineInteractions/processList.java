@@ -32,16 +32,23 @@ public class processList {
         int num;
         do{
             interactWithText.printValueToConsole(titleCommandLine + ": ", 25, true);
-            for(int i=0; i!=listToDisplay.length;i++) {
-               interactWithText.printValueToConsole("[" + (i + 1) + "] " + listToDisplay[i], 25, true);
+            for(int i=0; i!=listToDisplay.length;i++){
+                if(listToDisplay[i] == null){
+                    interactWithText.printValueToConsole("[" + (i + 1) + "] " + "- EMPTY -", 25, true);
+                }else{
+                    interactWithText.printValueToConsole("[" + (i + 1) + "] " + listToDisplay[i], 25, true);
+                }
             }
             System.out.println();
             interactWithText.printValueToConsole("Enter Command: ", 25, false);
             num = determineSelected(listToDisplay, interactWithText.readValueFromConsole());
             System.out.println();
             if(num == -1){
-                interactWithText.printValueToConsole("You can't do that.", 25, true);
+                interactWithText.printValueToConsole("You cannot do that. ", 25, false);
+                interactWithText.printValueToConsole("[Unrecognized command]", 5, true);
                 interactWithText.printValueToConsole("", 100, true);
+            }else{
+                interactWithText.printValueToConsole("You chose: [" + (num + 1) + "] " + listToDisplay[num], 25, true);
             }
         }while(num == -1);
         return num;

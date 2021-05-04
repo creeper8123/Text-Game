@@ -2,8 +2,8 @@ package entityData;
 
 
 
-import mainExecution.mainClass;
 import worldData.mapData;
+import itemData.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -11,31 +11,91 @@ import java.util.ArrayList;
 public class Player {
     public int health;
     public int[] location = {0, 15, 15}; //spawn is {0, 15, 15}. Format is {Floor, x, y}
-    public int world = 0;
-    public boolean inBattle = false;
+    public int world;
+    public boolean inBattle;
+    
+    public buff[] perks = {new buff(null), new buff(null), new buff(null), new buff(null), new buff(null), new buff(null)};
+    public item[] items = new item[4];
+    public spell[] spells = {new spell(null), new spell(null), new spell(null), new spell(null), new spell(null), new spell(null), new spell(null), new spell(null)};
+    public potion[] potions = new potion[4];
 
     public Player(){
         this.health = 100;
+        this.world = mapData.OVERWORLD;
+        this.inBattle = false;
+        if(Math.random() > 0.5){
+            spells[0] = new spell("magicBolt");
+        }else{
+            spells[0] = new spell("bouncingBolt");
+        }
     }
 
-    public void doAction(Player player) throws IOException {
-        String[] options = {"Move", "Items"};
+    public void doAction(Player player, mapData world) throws IOException {
+        String[] options = {"Move", "Spells","Perks", "Potions", "Items", "Info", "Exit"};
         int nextInstruction = 0;
         do{
             int selectedOption = engineInteractions.processList.chooseFromList(options, "Valid Commands");
             switch (options[selectedOption]) {
-                case "Move" -> nextInstruction = movePlayer(player, true);
-                case "Items" ->{
-                    engineInteractions.interactWithText.printValueToConsole("LOL nothin' here", 25, true);
-                    System.out.println();
+                case "Move" -> nextInstruction = movePlayer(player, world, true);
+                case "Spells" -> {
+                    String[] spellsName = new String[spells.length + 1];
+                    for(int i=0;i!=spells.length;i++){
+                        spellsName[i] = spells[i].showName;
+                    }
+                    spellsName[8] = "Back";
+                    engineInteractions.processList.chooseFromList(spellsName, "Available Spells");
+                    nextInstruction = 0;
                 }
+                case "Perks" -> {
+                    String[] perkName = new String[perks.length + 1];
+                    for(int i = 0; i!= perks.length; i++){
+                        perkName[i] = null;//perks[i].showName
+                    }
+                    perkName[perks.length] = "Back";
+                    engineInteractions.processList.chooseFromList(perkName, "Equipped Equipment");
+                    nextInstruction = 0;
+                }
+                case "Potions" -> {
+                    String[] potionName = new String[potions.length + 1];
+                    for(int i = 0; i!= potions.length; i++){
+                        potionName[i] = null;//potions[i].showName
+                    }
+                    potionName[potions.length] = "Back";
+                    engineInteractions.processList.chooseFromList(potionName, "Available Potions");
+                    nextInstruction = 0;
+                }
+                case "Items" -> {
+                    String[] itemName = new String[items.length + 1];
+                    for(int i = 0; i!= items.length; i++){
+                        itemName[i] = null;//items[i].showName
+                    }
+                    itemName[items.length] = "Back";
+                    engineInteractions.processList.chooseFromList(itemName, "Available Items");
+                    nextInstruction = 0;
+                }
+                case "Info" -> {
+                    engineInteractions.interactWithText.printValueToConsole("LOL nothing here (Info)", 25, true);
+                    nextInstruction = 0;
+                }
+                case "Exit" ->{
+                    engineInteractions.interactWithText.printValueToConsole("Are you sure you want to exit?", 25, true);
+                    String[] exitOptions = {"Yes", "No"};
+                    int selectedExitOption = engineInteractions.processList.chooseFromList(exitOptions, "Valid Commands");
+                    if(selectedExitOption == 0){
+                        engineInteractions.interactWithText.printValueToConsole("", 1000, false);
+                        engineInteractions.interactWithText.printValueToConsole("Goodbye, and thank you for playing!", 100, true);
+                        System.exit(-2);
+                    }
+                    nextInstruction = -1;
+                }
+                default -> System.out.println("You shouldn't see this");
             }
         }while(nextInstruction == -1);
     }
 
     public static final String[] moveDirections = {"North", "East", "West", "South"};
-    public int movePlayer(Player player, boolean addBack) throws IOException {
-        String[] canMoveTo = player.getViableDirections(player.location, mainClass.world, player, addBack).toArray(new String[0]);
+    public int movePlayer(Player player, mapData world, boolean addBack) throws IOException {
+        String[] canMoveTo = player.getViableDirections(player.location, world, player, addBack).toArray(new String[0]);
         int moveTo = engineInteractions.processList.chooseFromList(canMoveTo, "Viable Directions");
         switch (canMoveTo[moveTo]) {
             case "North" -> player.location[1] -= 1;
@@ -52,7 +112,7 @@ public class Player {
     private ArrayList<String> getViableDirections(int[] entityLocation, mapData world, Player player, boolean addBack){
         ArrayList<String> outputData = new ArrayList<>();
         //Overworld
-        if(player.world == 0){
+        if(player.world == mapData.OVERWORLD){
             if(player.location[1] > 0){ //Is North clear to walk?
                 if(world.Overworld[entityLocation[1]-1][entityLocation[2]].isWalkable){
                     outputData.add(moveDirections[0]);
@@ -74,7 +134,7 @@ public class Player {
                 }
             }
             //Ice Dungeon
-        }else if(player.world == 1){
+        }else if(player.world == mapData.DUNGEON_ICE){
             if(player.location[1] > 0){ //Is North clear to walk?
                 if(world.dungeonIce[entityLocation[0]][entityLocation[1]-1][entityLocation[2]].isWalkable){
                     outputData.add(moveDirections[0]);
@@ -96,7 +156,7 @@ public class Player {
                 }
             }
             //Fire Dungeon
-        }else if(player.world == 2){
+        }else if(player.world == mapData.DUNGEON_FIRE){
             if(player.location[1] > 0){ //Is North clear to walk?
                 if(world.dungeonFire[entityLocation[0]][entityLocation[1]-1][entityLocation[2]].isWalkable){
                     outputData.add(moveDirections[0]);
@@ -118,7 +178,7 @@ public class Player {
                 }
             }
             //Ocean Dungeon
-        }else if(player.world == 3){
+        }else if(player.world == mapData.DUNGEON_OCEAN){
             if(player.location[1] > 0){ //Is North clear to walk?
                 if(world.dungeonOcean[entityLocation[0]][entityLocation[1]-1][entityLocation[2]].isWalkable){
                     outputData.add(moveDirections[0]);
@@ -140,7 +200,7 @@ public class Player {
                 }
             }
             //Poison Dungeon
-        }else if(player.world == 4){
+        }else if(player.world == mapData.DUNGEON_POISON){
             if(player.location[1] > 0){ //Is North clear to walk?
                 if(world.dungeonPoison[entityLocation[0]][entityLocation[1]-1][entityLocation[2]].isWalkable){
                     outputData.add(moveDirections[0]);
@@ -162,7 +222,7 @@ public class Player {
                 }
             }
             //Final Dungeon
-        }else if(player.world == 5){
+        }else if(player.world == mapData.DUNGEON_FINAL){
             if(player.location[1] > 0){ //Is North clear to walk?
                 if(world.dungeonFinal[entityLocation[0]][entityLocation[1]-1][entityLocation[2]].isWalkable){
                     outputData.add(moveDirections[0]);

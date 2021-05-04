@@ -16,8 +16,9 @@ public class mainClass {
         //Runtime.getRuntime().exec(new String[]{"cmd.exe","/c","start"}); //Open CMD, doesn't yet run program in CMD
 
         for(int i=0;i<100;i++){
-            player.doAction(player);
-            System.out.println("===Next iteration===");
+            player.doAction(player, world);
+            System.out.println("");
+            System.out.println("!DEBUG! ===Next iteration==="); //TODO: Remove this line completely when done
         }
     }
 }
