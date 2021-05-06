@@ -4,6 +4,7 @@ import entityData.Player;
 import worldData.mapData;
 
 import java.io.IOException;
+import java.util.Arrays;
 
 public class mainClass {
 
@@ -18,6 +19,7 @@ public class mainClass {
         for(int i=0;i<100;i++){
             player.doAction(player, world);
             System.out.println("");
+            System.out.println(Arrays.toString(player.location));
             System.out.println("!DEBUG! ===Next iteration==="); //TODO: Remove this line completely when done
         }
     }

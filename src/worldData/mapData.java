@@ -48,29 +48,31 @@ public class mapData {
 
     public tileDungeonIce[][][] dungeonIce = {
         { //Floor 1
-            {},
-            {},
-            {},
-            {},
-            {},
-            {},
-            {}
+            {new tileDungeonIce("Default"), new tileDungeonIce("Default"), new tileDungeonIce("Default")},
+            {new tileDungeonIce("Default"), new tileDungeonIce("Default"), new tileDungeonIce("Default")},
+            {new tileDungeonIce("Default"), new tileDungeonIce("Default"), new tileDungeonIce("Default")},
+            {new tileDungeonIce("Default"), new tileDungeonIce("Default"), new tileDungeonIce("Default")},
+            {new tileDungeonIce("Default"), new tileDungeonIce("Default"), new tileDungeonIce("Default")},
+            {new tileDungeonIce("Default"), new tileDungeonIce("Default"), new tileDungeonIce("Default")},
+            {new tileDungeonIce("Default"), new tileDungeonIce("Default"), new tileDungeonIce("Default")}
         },
         { //Floor 2
-            {},
-            {},
-            {},
-            {},
-            {},
-            {},
-            {}
+            {new tileDungeonIce("Default"), new tileDungeonIce("Default"), new tileDungeonIce("Default")},
+            {new tileDungeonIce("Default"), new tileDungeonIce("Default"), new tileDungeonIce("Default")},
+            {new tileDungeonIce("Default"), new tileDungeonIce("Default"), new tileDungeonIce("Default")},
+            {new tileDungeonIce("Default"), new tileDungeonIce("Default"), new tileDungeonIce("Default")},
+            {new tileDungeonIce("Default"), new tileDungeonIce("Default"), new tileDungeonIce("Default")},
+            {new tileDungeonIce("Default"), new tileDungeonIce("Default"), new tileDungeonIce("Default")},
+            {new tileDungeonIce("Default"), new tileDungeonIce("Default"), new tileDungeonIce("Default")}
         },
         { //Floor 3
-            {},
-            {},
-            {},
-            {},
-            {}
+            {new tileDungeonIce("Default"), new tileDungeonIce("Default"), new tileDungeonIce("Default")},
+            {new tileDungeonIce("Default"), new tileDungeonIce("Default"), new tileDungeonIce("Default")},
+            {new tileDungeonIce("Default"), new tileDungeonIce("Default"), new tileDungeonIce("Default")},
+            {new tileDungeonIce("Default"), new tileDungeonIce("Default"), new tileDungeonIce("Default")},
+            {new tileDungeonIce("Default"), new tileDungeonIce("Default"), new tileDungeonIce("Default")},
+            {new tileDungeonIce("Default"), new tileDungeonIce("Default"), new tileDungeonIce("Default")},
+            {new tileDungeonIce("Default"), new tileDungeonIce("Default"), new tileDungeonIce("Default")}
         },
     };
 
@@ -80,6 +82,8 @@ public class mapData {
             {},
             {},
             {},
+            {},
+            {},
             {}
         },
         { //Floor 2
@@ -87,9 +91,13 @@ public class mapData {
             {},
             {},
             {},
+            {},
+            {},
             {}
         },
         { //Floor 3
+            {},
+            {},
             {},
             {},
             {},
@@ -104,6 +112,8 @@ public class mapData {
             {},
             {},
             {},
+            {},
+            {},
             {}
         },
         { //Floor 2
@@ -111,9 +121,13 @@ public class mapData {
             {},
             {},
             {},
+            {},
+            {},
             {}
         },
         { //Floor 3
+            {},
+            {},
             {},
             {},
             {},
@@ -128,6 +142,8 @@ public class mapData {
             {},
             {},
             {},
+            {},
+            {},
             {}
         },
         { //Floor 2
@@ -135,9 +151,13 @@ public class mapData {
             {},
             {},
             {},
+            {},
+            {},
             {}
         },
         { //Floor 3
+            {},
+            {},
             {},
             {},
             {},
@@ -152,6 +172,8 @@ public class mapData {
             {},
             {},
             {},
+            {},
+            {},
             {}
         },
         { //Floor 2
@@ -159,9 +181,13 @@ public class mapData {
             {},
             {},
             {},
+            {},
+            {},
             {}
         },
         { //Floor 3
+            {},
+            {},
             {},
             {},
             {},

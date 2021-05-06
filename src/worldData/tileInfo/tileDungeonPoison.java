@@ -18,7 +18,7 @@ public class tileDungeonPoison {
     public int fluidLevel = 0; //How many updates till the fluid disperses? (-1 is infinite)
 
     public  boolean isTeleporter = false; //Does the player teleport when stepping on this tile?
-    public String teleportTo = "0, [0, 16, 16]"; //Where does the player teleport to? (Format: "Map #, [Floor, x, y]")
+    public int[] teleportTo = new int[]{0, 0, 15, 15}; //Where does the player teleport to? (Format: {Map #, Floor, x, y})
 
     public tileDungeonPoison(String inputData){
         tileName = inputData;

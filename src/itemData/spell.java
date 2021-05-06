@@ -10,7 +10,7 @@ public class spell{
     public boolean selfDamage = false; //Can the spell hit the player if it misses its target? Chance to hit the player is the following: (if the spell misses) selfDamageChance = (1-accuracy)/2
     public int spellCount = 0; //-1 is infinite
     public int maxSpellCount = 0; //-1 is infinite
-    public int attackScope = 0; //0 is one target, >0 is target count + 1, -1 is all targets (excluding player), -2 is on all targets (including player)
+    public int attackScope = 0; //0 is one target, >0 is this number + 1, -1 is all targets (excluding player), -2 is on all targets (including player)
     public int manaCost = 0; //Cost of mana used to cast, irrelevant of whether or not it hits.
     public double accuracy = 0.00; //Chance of the spell to hit the target (0-1)
     public String spawnsFluid = null; //Name of the fluid spawned, else null
