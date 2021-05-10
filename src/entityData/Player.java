@@ -37,7 +37,7 @@ public class Player {
         }
     }
 
-    public void doAction(Player player, mapData world) throws IOException {
+    public void doNormalAction(Player player, mapData world) throws IOException {
         String[] options = {"Move", "Spells","Perks", "Potions", "Items", "Info", "Exit"};
         int nextInstruction = 0;
         do{
@@ -56,7 +56,7 @@ public class Player {
                 case "Perks" -> {
                     String[] perkName = new String[perks.length + 1];
                     for(int i = 0; i!= perks.length; i++){
-                        perkName[i] = null;//perks[i].showName
+                        perkName[i] = perks[i].showName;
                     }
                     perkName[perks.length] = "Back";
                     int selectedOptionLvl2 = 0;
@@ -71,7 +71,7 @@ public class Player {
                 case "Potions" -> {
                     String[] potionName = new String[potions.length + 1];
                     for(int i = 0; i!= potions.length; i++){
-                        potionName[i] = null;//potions[i].showName
+                        potionName[i] = potions[i].showName;
                     }
                     potionName[potions.length] = "Back";
                     engineInteractions.processList.chooseFromList(potionName, "Available Potions");
@@ -80,7 +80,7 @@ public class Player {
                 case "Items" -> {
                     String[] itemName = new String[items.length + 1];
                     for(int i = 0; i!= items.length; i++){
-                        itemName[i] = null;//items[i].showName
+                        itemName[i] = items[i].showName;
                     }
                     itemName[items.length] = "Back";
                     engineInteractions.processList.chooseFromList(itemName, "Available Items");
