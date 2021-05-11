@@ -38,10 +38,10 @@ public class Player {
     }
 
     public void doNormalAction(Player player, mapData world) throws IOException {
-        String[] options = {"Move", "Spells","Perks", "Potions", "Items", "Info", "Exit"};
+        final String[] options = {"Move", "Spells","Perks", "Potions", "Items", "Info", "Exit"};
         int nextInstruction = 0;
         do{
-            int selectedOptionLvl1 = engineInteractions.processList.chooseFromList(options, "Valid Commands");
+            int selectedOptionLvl1 = engineInteractions.processList.chooseFromList(options, "Valid commands");
             switch (options[selectedOptionLvl1]) {
                 case "Move" -> nextInstruction = movePlayer(player, world, true, "Teleporter");
                 case "Spells" -> {
@@ -74,7 +74,7 @@ public class Player {
                         potionName[i] = potions[i].showName;
                     }
                     potionName[potions.length] = "Back";
-                    engineInteractions.processList.chooseFromList(potionName, "Available Potions");
+                    engineInteractions.processList.chooseFromList(potionName, "Available potions");
                     nextInstruction = 0;
                 }
                 case "Items" -> {
@@ -83,11 +83,32 @@ public class Player {
                         itemName[i] = items[i].showName;
                     }
                     itemName[items.length] = "Back";
-                    engineInteractions.processList.chooseFromList(itemName, "Available Items");
+                    engineInteractions.processList.chooseFromList(itemName, "Available items");
                     nextInstruction = 0;
                 }
                 case "Info" -> {
-                    engineInteractions.interactWithText.printValueToConsole("LOL nothing here (Info)", 25, true);
+                    final String[] infoOptions = {"Area", "Spells", "Perks", "Potions", "Items"};
+                    int selectedOptionLvl2 = engineInteractions.processList.chooseFromList(infoOptions, "Get more info about");
+                    switch(infoOptions[selectedOptionLvl2]){
+                        case "Area" ->{
+                            final String[] lookOptions = {"North", "East", "West", "South"};
+                            String[] newLookOptions = getViableDirections(world, player, false).toArray(new String[0]);
+                            System.out.println(newLookOptions);
+                            //int selectedOptionLvl3 = engineInteractions.processList.chooseFromList(infoOptions, "Get more info about");
+                        }
+                        case "Spells" ->{
+
+                        }
+                        case "Perks" ->{
+
+                        }
+                        case "Potions" ->{
+
+                        }
+                        case "Items" ->{
+
+                        }
+                    }
                     nextInstruction = 0;
                 }
                 case "Exit" ->{
@@ -96,7 +117,7 @@ public class Player {
                     int selectedExitOption = engineInteractions.processList.chooseFromList(exitOptions, "Valid Commands");
                     if(selectedExitOption == 0){
                         engineInteractions.interactWithText.printValueToConsole("", 1000, false);
-                        engineInteractions.interactWithText.printValueToConsole("Goodbye, and thank you for playing!", 100, true);
+                        engineInteractions.interactWithText.printValueToConsole("Goodbye!", 50, true);
                         System.exit(-2);
                     }
                     nextInstruction = -1;
