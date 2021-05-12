@@ -8,6 +8,7 @@ import itemData.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Player {
     public int health;
@@ -87,14 +88,36 @@ public class Player {
                     nextInstruction = 0;
                 }
                 case "Info" -> {
-                    final String[] infoOptions = {"Area", "Spells", "Perks", "Potions", "Items"};
+                    final String[] infoOptions = {"Area", "Spells", "Perks", "Potions", "Items", "Back"};
+                    int nextInstruction2 = 0;
+                    do{
+
+                    }while(nextInstruction2 == -1);
                     int selectedOptionLvl2 = engineInteractions.processList.chooseFromList(infoOptions, "Get more info about");
                     switch(infoOptions[selectedOptionLvl2]){
                         case "Area" ->{
                             final String[] lookOptions = {"North", "East", "West", "South"};
-                            String[] newLookOptions = getViableDirections(world, player, false).toArray(new String[0]);
-                            System.out.println(newLookOptions);
-                            //int selectedOptionLvl3 = engineInteractions.processList.chooseFromList(infoOptions, "Get more info about");
+                            ArrayList<String> newLookOptions = getViableDirections(world, player, true);
+                            newLookOptions.remove("Teleport");
+                            String[] finalLookOptions = newLookOptions.toArray(new String[0]);
+                            int selectedOptionLvl3 = engineInteractions.processList.chooseFromList(finalLookOptions, "Get more info about");
+                            switch(lookOptions[selectedOptionLvl3]){
+                                case "North" ->{
+                                    System.out.println("N");
+                                }
+                                case "East" ->{
+                                    System.out.println("E");
+                                }
+                                case "West" ->{
+                                    System.out.println("W");
+                                }
+                                case "South" ->{
+                                    System.out.println("S");
+                                }
+                                case "Back" ->{
+
+                                }
+                            }
                         }
                         case "Spells" ->{
 
@@ -106,6 +129,9 @@ public class Player {
 
                         }
                         case "Items" ->{
+
+                        }
+                        case "Back" ->{
 
                         }
                     }
