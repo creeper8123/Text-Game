@@ -35,17 +35,17 @@ public class tileDungeonIce {
                 canHoldFluid = true;
                 fluidOnGround = "none";
                 fluidLevel = 1;
-                isSlippery = true;
             }
-            case "IceTile" -> {
+            case "Slippery Ice" -> {
                 isWalkable = true;
-                localTemp = 0;
+                localTemp = 12;
                 isFlammable = false;
                 isBurning = false;
                 baseBurnTime = 0;
                 canHoldFluid = true;
                 fluidOnGround = "none";
                 fluidLevel = 1;
+                isSlippery = true;
             }
         }
     }

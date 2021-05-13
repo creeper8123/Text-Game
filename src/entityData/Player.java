@@ -91,51 +91,126 @@ public class Player {
                     final String[] infoOptions = {"Area", "Spells", "Perks", "Potions", "Items", "Back"};
                     int nextInstruction2 = 0;
                     do{
-
-                    }while(nextInstruction2 == -1);
-                    int selectedOptionLvl2 = engineInteractions.processList.chooseFromList(infoOptions, "Get more info about");
-                    switch(infoOptions[selectedOptionLvl2]){
-                        case "Area" ->{
-                            final String[] lookOptions = {"North", "East", "West", "South"};
-                            ArrayList<String> newLookOptions = getViableDirections(world, player, true);
-                            newLookOptions.remove("Teleport");
-                            String[] finalLookOptions = newLookOptions.toArray(new String[0]);
-                            int selectedOptionLvl3 = engineInteractions.processList.chooseFromList(finalLookOptions, "Get more info about");
-                            switch(lookOptions[selectedOptionLvl3]){
-                                case "North" ->{
-                                    System.out.println("N");
+                        int selectedOptionLvl2 = engineInteractions.processList.chooseFromList(infoOptions, "Get more info about");
+                        switch(infoOptions[selectedOptionLvl2]){
+                            case "Area" ->{
+                                final String[] lookOptions = {"North", "East", "West", "South"};
+                                ArrayList<String> newLookOptions = getViableDirections(world, player, false);
+                                newLookOptions.remove("Teleport");
+                                newLookOptions.add("Current");
+                                newLookOptions.add("Back");
+                                String[] finalLookOptions = newLookOptions.toArray(new String[0]);
+                                int selectedOptionLvl3 = engineInteractions.processList.chooseFromList(finalLookOptions, "Get more info about");
+                                switch(finalLookOptions[selectedOptionLvl3]){
+                                    case "Current" ->{
+                                        if(player.location[0] == mapData.OVERWORLD){
+                                            engineInteractions.interactWithText.printValueToConsole("Under your feet, there is " + world.Overworld[player.location[2]][player.location[3]].tileName, 25, true);
+                                        }else if(player.location[0] == mapData.DUNGEON_ICE){
+                                            engineInteractions.interactWithText.printValueToConsole("Under your feet, there is " + world.dungeonIce[player.location[1]][player.location[2]][player.location[3]].tileName, 25, true);
+                                        }else if(player.location[0] == mapData.DUNGEON_FIRE){
+                                            engineInteractions.interactWithText.printValueToConsole("Under your feet, there is " + world.dungeonFire[player.location[1]][player.location[2]][player.location[3]].tileName, 25, true);
+                                        }else if(player.location[0] == mapData.DUNGEON_OCEAN){
+                                            engineInteractions.interactWithText.printValueToConsole("Under your feet, there is " + world.dungeonOcean[player.location[1]][player.location[2]][player.location[3]].tileName, 25, true);
+                                        }else if(player.location[0] == mapData.DUNGEON_POISON){
+                                            engineInteractions.interactWithText.printValueToConsole("Under your feet, there is " + world.dungeonPoison[player.location[1]][player.location[2]][player.location[3]].tileName, 25, true);
+                                        }else  if(player.location[0] == mapData.DUNGEON_FINAL){
+                                            engineInteractions.interactWithText.printValueToConsole("Under your feet, there is " + world.dungeonFinal[player.location[1]][player.location[2]][player.location[3]].tileName, 25, true);
+                                        }
+                                        nextInstruction2 = 0;
+                                    }
+                                    case "North" ->{
+                                        if(player.location[0] == mapData.OVERWORLD){
+                                            engineInteractions.interactWithText.printValueToConsole("To your north, there is " + world.Overworld[player.location[2]-1][player.location[3]].tileName, 25, true);
+                                        }else if(player.location[0] == mapData.DUNGEON_ICE){
+                                            engineInteractions.interactWithText.printValueToConsole("To your north, there is " + world.dungeonIce[player.location[1]][player.location[2]-1][player.location[3]].tileName, 25, true);
+                                        }else if(player.location[0] == mapData.DUNGEON_FIRE){
+                                            engineInteractions.interactWithText.printValueToConsole("To your north, there is " + world.dungeonFire[player.location[1]][player.location[2]-1][player.location[3]].tileName, 25, true);
+                                        }else if(player.location[0] == mapData.DUNGEON_OCEAN){
+                                            engineInteractions.interactWithText.printValueToConsole("To your north, there is " + world.dungeonOcean[player.location[1]][player.location[2]-1][player.location[3]].tileName, 25, true);
+                                        }else if(player.location[0] == mapData.DUNGEON_POISON){
+                                            engineInteractions.interactWithText.printValueToConsole("To your north, there is " + world.dungeonPoison[player.location[1]][player.location[2]-1][player.location[3]].tileName, 25, true);
+                                        }else  if(player.location[0] == mapData.DUNGEON_FINAL){
+                                            engineInteractions.interactWithText.printValueToConsole("To your north, there is " + world.dungeonFinal[player.location[1]][player.location[2]-1][player.location[3]].tileName, 25, true);
+                                        }
+                                        nextInstruction2 = 0;
+                                    }
+                                    case "East" ->{
+                                        if(player.location[0] == mapData.OVERWORLD){
+                                            engineInteractions.interactWithText.printValueToConsole("To your east, there is " + world.Overworld[player.location[2]][player.location[3]+1].tileName, 25, true);
+                                        }else if(player.location[0] == mapData.DUNGEON_ICE){
+                                            engineInteractions.interactWithText.printValueToConsole("To your east, there is " + world.dungeonIce[player.location[1]][player.location[2]][player.location[3]+1].tileName, 25, true);
+                                        }else if(player.location[0] == mapData.DUNGEON_FIRE){
+                                            engineInteractions.interactWithText.printValueToConsole("To your east, there is " + world.dungeonFire[player.location[1]][player.location[2]][player.location[3]+1].tileName, 25, true);
+                                        }else if(player.location[0] == mapData.DUNGEON_OCEAN){
+                                            engineInteractions.interactWithText.printValueToConsole("To your east, there is " + world.dungeonOcean[player.location[1]][player.location[2]][player.location[3]+1].tileName, 25, true);
+                                        }else if(player.location[0] == mapData.DUNGEON_POISON){
+                                            engineInteractions.interactWithText.printValueToConsole("To your east, there is " + world.dungeonPoison[player.location[1]][player.location[2]][player.location[3]+1].tileName, 25, true);
+                                        }else  if(player.location[0] == mapData.DUNGEON_FINAL){
+                                            engineInteractions.interactWithText.printValueToConsole("To your east, there is " + world.dungeonFinal[player.location[1]][player.location[2]][player.location[3]+1].tileName, 25, true);
+                                        }
+                                        nextInstruction2 = 0;
+                                    }
+                                    case "West" ->{
+                                        if(player.location[0] == mapData.OVERWORLD){
+                                            engineInteractions.interactWithText.printValueToConsole("To your west, there is " + world.Overworld[player.location[2]][player.location[3]-1].tileName, 25, true);
+                                        }else if(player.location[0] == mapData.DUNGEON_ICE){
+                                            engineInteractions.interactWithText.printValueToConsole("To your west, there is " + world.dungeonIce[player.location[1]][player.location[2]][player.location[3]-1].tileName, 25, true);
+                                        }else if(player.location[0] == mapData.DUNGEON_FIRE){
+                                            engineInteractions.interactWithText.printValueToConsole("To your west, there is " + world.dungeonFire[player.location[1]][player.location[2]][player.location[3]-1].tileName, 25, true);
+                                        }else if(player.location[0] == mapData.DUNGEON_OCEAN){
+                                            engineInteractions.interactWithText.printValueToConsole("To your west, there is " + world.dungeonOcean[player.location[1]][player.location[2]][player.location[3]-1].tileName, 25, true);
+                                        }else if(player.location[0] == mapData.DUNGEON_POISON){
+                                            engineInteractions.interactWithText.printValueToConsole("To your west, there is " + world.dungeonPoison[player.location[1]][player.location[2]][player.location[3]-1].tileName, 25, true);
+                                        }else  if(player.location[0] == mapData.DUNGEON_FINAL){
+                                            engineInteractions.interactWithText.printValueToConsole("To your west, there is " + world.dungeonFinal[player.location[1]][player.location[2]][player.location[3]-1].tileName, 25, true);
+                                        }
+                                        nextInstruction2 = 0;
+                                    }
+                                    case "South" ->{
+                                        if(player.location[0] == mapData.OVERWORLD){
+                                            engineInteractions.interactWithText.printValueToConsole("To your south, there is " + world.Overworld[player.location[2]+1][player.location[3]].tileName, 25, true);
+                                        }else if(player.location[0] == mapData.DUNGEON_ICE){
+                                            engineInteractions.interactWithText.printValueToConsole("To your south, there is " + world.dungeonIce[player.location[1]][player.location[2]+1][player.location[3]].tileName, 25, true);
+                                        }else if(player.location[0] == mapData.DUNGEON_FIRE){
+                                            engineInteractions.interactWithText.printValueToConsole("To your south, there is " + world.dungeonFire[player.location[1]][player.location[2]+1][player.location[3]].tileName, 25, true);
+                                        }else if(player.location[0] == mapData.DUNGEON_OCEAN){
+                                            engineInteractions.interactWithText.printValueToConsole("To your south, there is " + world.dungeonOcean[player.location[1]][player.location[2]+1][player.location[3]].tileName, 25, true);
+                                        }else if(player.location[0] == mapData.DUNGEON_POISON){
+                                            engineInteractions.interactWithText.printValueToConsole("To your south, there is " + world.dungeonPoison[player.location[1]][player.location[2]+1][player.location[3]].tileName, 25, true);
+                                        }else  if(player.location[0] == mapData.DUNGEON_FINAL){
+                                            engineInteractions.interactWithText.printValueToConsole("To your south, there is " + world.dungeonFinal[player.location[1]][player.location[2]+1][player.location[3]].tileName, 25, true);
+                                        }
+                                        nextInstruction2 = 0;
+                                    }
+                                    case "Back" ->{
+                                        nextInstruction2 = -1;
+                                    }
                                 }
-                                case "East" ->{
-                                    System.out.println("E");
-                                }
-                                case "West" ->{
-                                    System.out.println("W");
-                                }
-                                case "South" ->{
-                                    System.out.println("S");
-                                }
-                                case "Back" ->{
-
-                                }
+                                nextInstruction = 0;
+                            }
+                            case "Spells" ->{
+                                System.out.println("Spells Info");
+                                nextInstruction = 0;
+                            }
+                            case "Perks" ->{
+                                System.out.println("Perks Info");
+                                nextInstruction = 0;
+                            }
+                            case "Potions" ->{
+                                System.out.println("Potions Info");
+                                nextInstruction = 0;
+                            }
+                            case "Items" ->{
+                                System.out.println("Items Info");
+                                nextInstruction = 0;
+                            }
+                            case "Back" ->{
+                                System.out.println("Back");
+                                nextInstruction = -1;
                             }
                         }
-                        case "Spells" ->{
-
-                        }
-                        case "Perks" ->{
-
-                        }
-                        case "Potions" ->{
-
-                        }
-                        case "Items" ->{
-
-                        }
-                        case "Back" ->{
-
-                        }
-                    }
-                    nextInstruction = 0;
+                    }while(nextInstruction2 == -1);
+                    //nextInstruction = 0;
                 }
                 case "Exit" ->{
                     engineInteractions.interactWithText.printValueToConsole("Are you sure you want to exit?", 25, true);
