@@ -49,6 +49,7 @@ public class processList {
                 interactWithText.printValueToConsole("", 100, true);
             }else{
                 interactWithText.printValueToConsole("You chose: [" + (num + 1) + "] " + listToDisplay[num], 25, true);
+                interactWithText.printValueToConsole("", 100, true);
             }
         }while(num == -1);
         return num;

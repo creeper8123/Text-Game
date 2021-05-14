@@ -94,9 +94,86 @@ public class Player {
                         int selectedOptionLvl2 = engineInteractions.processList.chooseFromList(infoOptions, "Get more info about");
                         switch(infoOptions[selectedOptionLvl2]){
                             case "Area" ->{
-                                final String[] lookOptions = {"North", "East", "West", "South"};
-                                ArrayList<String> newLookOptions = getViableDirections(world, player, false);
-                                newLookOptions.remove("Teleport");
+                                ArrayList<String> newLookOptions = new ArrayList<>();
+                                if(player.location[0] == mapData.OVERWORLD){
+                                    if(!(player.location[2] == 0)){
+                                        newLookOptions.add("North");
+                                    }
+                                    if(!(player.location[3] == world.Overworld[player.location[2]].length-1)){
+                                        newLookOptions.add("East");
+                                    }
+                                    if(!(player.location[3] == 0)){
+                                        newLookOptions.add("West");
+                                    }
+                                    if(!(player.location[2] == world.Overworld.length-1)){
+                                        newLookOptions.add("South");
+                                    }
+                                }else if(player.location[0] == mapData.DUNGEON_ICE){
+                                    if(!(player.location[2] == 0)){
+                                        newLookOptions.add("North");
+                                    }
+                                    if(!(player.location[3] == world.dungeonIce[player.location[1]][player.location[2]].length-1)){
+                                        newLookOptions.add("East");
+                                    }
+                                    if(!(player.location[3] == 0)){
+                                        newLookOptions.add("West");
+                                    }
+                                    if(!(player.location[2] == world.dungeonIce[player.location[1]].length-1)){
+                                        newLookOptions.add("South");
+                                    }
+                                }else if(player.location[0] == mapData.DUNGEON_FIRE){
+                                    if(!(player.location[2] == 0)){
+                                        newLookOptions.add("North");
+                                    }
+                                    if(!(player.location[3] == world.dungeonFire[player.location[1]][player.location[2]].length-1)){
+                                        newLookOptions.add("East");
+                                    }
+                                    if(!(player.location[3] == 0)){
+                                        newLookOptions.add("West");
+                                    }
+                                    if(!(player.location[2] == world.dungeonFire[player.location[1]].length-1)){
+                                        newLookOptions.add("South");
+                                    }
+                                }else if(player.location[0] == mapData.DUNGEON_OCEAN){
+                                    if(!(player.location[2] == 0)){
+                                        newLookOptions.add("North");
+                                    }
+                                    if(!(player.location[3] == world.dungeonOcean[player.location[1]][player.location[2]].length-1)){
+                                        newLookOptions.add("East");
+                                    }
+                                    if(!(player.location[3] == 0)){
+                                        newLookOptions.add("West");
+                                    }
+                                    if(!(player.location[2] == world.dungeonOcean[player.location[1]].length-1)){
+                                        newLookOptions.add("South");
+                                    }
+                                }else if(player.location[0] == mapData.DUNGEON_POISON){
+                                    if(!(player.location[2] == 0)){
+                                        newLookOptions.add("North");
+                                    }
+                                    if(!(player.location[3] == world.dungeonPoison[player.location[1]][player.location[2]].length-1)){
+                                        newLookOptions.add("East");
+                                    }
+                                    if(!(player.location[3] == 0)){
+                                        newLookOptions.add("West");
+                                    }
+                                    if(!(player.location[2] == world.dungeonPoison[player.location[1]].length-1)){
+                                        newLookOptions.add("South");
+                                    }
+                                }else  if(player.location[0] == mapData.DUNGEON_FINAL){
+                                    if(!(player.location[2] == 0)){
+                                        newLookOptions.add("North");
+                                    }
+                                    if(!(player.location[3] == world.dungeonIce[player.location[2]].length-1)){
+                                        newLookOptions.add("East");
+                                    }
+                                    if(!(player.location[3] == 0)){
+                                        newLookOptions.add("West");
+                                    }
+                                    if(!(player.location[2] == world.dungeonIce.length-1)){
+                                        newLookOptions.add("South");
+                                    }
+                                }
                                 newLookOptions.add("Current");
                                 newLookOptions.add("Back");
                                 String[] finalLookOptions = newLookOptions.toArray(new String[0]);
@@ -186,11 +263,23 @@ public class Player {
                                         nextInstruction2 = -1;
                                     }
                                 }
-                                nextInstruction = 0;
+                                nextInstruction = -1;
                             }
                             case "Spells" ->{
-                                System.out.println("Spells Info");
-                                nextInstruction = 0;
+                                String[] spellsName = new String[spells.length + 1];
+                                for(int i=0;i!=spells.length;i++){
+                                    spellsName[i] = spells[i].showName;
+                                }
+                                spellsName[8] = "Back";
+                                int selectedOptionLvl3 = engineInteractions.processList.chooseFromList(spellsName, "Available Spells");
+                                if(spellsName[selectedOptionLvl3].equals("Back")){
+                                    nextInstruction2 = -1;
+                                }else{
+                                    engineInteractions.interactWithText.printValueToConsole("Name: " + spells[selectedOptionLvl3].showName, 25, true);
+                                    engineInteractions.interactWithText.printValueToConsole("Damage: " + spells[selectedOptionLvl3].damage + "±" + spells[selectedOptionLvl3].maxDamageVariation, 25, true);
+                                    nextInstruction2 = 0;
+                                    nextInstruction = -1;
+                                }
                             }
                             case "Perks" ->{
                                 System.out.println("Perks Info");
@@ -217,7 +306,7 @@ public class Player {
                     String[] exitOptions = {"Yes", "No"};
                     int selectedExitOption = engineInteractions.processList.chooseFromList(exitOptions, "Valid Commands");
                     if(selectedExitOption == 0){
-                        engineInteractions.interactWithText.printValueToConsole("", 1000, false);
+                        engineInteractions.interactWithText.printValueToConsole("", 500, false);
                         engineInteractions.interactWithText.printValueToConsole("Goodbye!", 50, true);
                         System.exit(-2);
                     }
@@ -225,6 +314,7 @@ public class Player {
                 }
                 default -> System.out.println("You shouldn't see this");
             }
+            engineInteractions.interactWithText.printValueToConsole("", 100, true);
         }while(nextInstruction == -1);
     }
 

@@ -18,6 +18,11 @@ public class mainClass {
 
         for(int i=0; i<100; i++){
             player.doNormalAction(player, world);
+
+
+            System.out.println("Press ENTER for the next iteration");
+            System.in.read();
+
             System.out.println(" ");
             System.out.println("!DEBUG! ===Next iteration==="); //TODO: Remove this line completely when done
         }
